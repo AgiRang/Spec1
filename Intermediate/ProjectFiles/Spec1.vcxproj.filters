@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <None Include="..\..\Spec1.uproject" />
+    <Filter Include="Source">
+      <UniqueIdentifier>{3693336A-E970-42E1-AA00-F5FFB0E83245}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\Spec1.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\Source\Spec1Editor.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <Filter Include="Config">
+      <UniqueIdentifier>{C46C7DA1-7BFB-4FFA-AAA0-8EAA7D3B7629}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Config\DefaultEditor.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEditorPerProjectUserSettings.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEngine.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultGame.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultInput.ini">
+      <Filter>Config</Filter>
+    </None>
+    <Filter Include="Source\Spec1">
+      <UniqueIdentifier>{7EDF1588-A32D-4442-BD87-56672D701B88}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\Spec1\Spec1.Build.cs">
+      <Filter>Source\Spec1</Filter>
+    </None>
+    <ClCompile Include="..\..\Source\Spec1\Spec1.cpp">
+      <Filter>Source\Spec1</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Spec1\Spec1.h">
+      <Filter>Source\Spec1</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\Spec1\Spec1Character.cpp">
+      <Filter>Source\Spec1</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Spec1\Spec1Character.h">
+      <Filter>Source\Spec1</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\Spec1\Spec1GameMode.cpp">
+      <Filter>Source\Spec1</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Spec1\Spec1GameMode.h">
+      <Filter>Source\Spec1</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

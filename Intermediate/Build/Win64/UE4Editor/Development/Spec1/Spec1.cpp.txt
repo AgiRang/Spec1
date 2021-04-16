@@ -1,0 +1,2 @@
+C:\Unreal Projects\Spec1\Intermediate\Build\Win64\UE4Editor\Development\Spec1\Definitions.Spec1.h
+C:\Unreal Projects\Spec1\Source\Spec1\Spec1.h

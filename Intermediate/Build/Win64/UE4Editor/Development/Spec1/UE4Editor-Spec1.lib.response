@@ -1,0 +1,18 @@
+/NOLOGO
+/errorReport:prompt
+/MACHINE:x64
+/SUBSYSTEM:WINDOWS
+/DEF
+/NAME:"UE4Editor-Spec1.dll"
+/IGNORE:4221
+/NODEFAULTLIB
+"C:\UnrealEngine\UnrealEngine-4.25-plus\Engine\Intermediate\Build\Win64\UE4Editor\Development\Engine\SharedPCH.Engine.ShadowErrors.h.obj"
+"C:\Unreal Projects\Spec1\Intermediate\Build\Win64\UE4Editor\Development\Spec1\Spec1.cpp.obj"
+"C:\Unreal Projects\Spec1\Intermediate\Build\Win64\UE4Editor\Development\Spec1\Spec1Character.cpp.obj"
+"C:\Unreal Projects\Spec1\Intermediate\Build\Win64\UE4Editor\Development\Spec1\Spec1GameMode.cpp.obj"
+"C:\Unreal Projects\Spec1\Intermediate\Build\Win64\UE4Editor\Development\Spec1\Spec1.init.gen.cpp.obj"
+"C:\Unreal Projects\Spec1\Intermediate\Build\Win64\UE4Editor\Development\Spec1\Spec1Character.gen.cpp.obj"
+"C:\Unreal Projects\Spec1\Intermediate\Build\Win64\UE4Editor\Development\Spec1\Spec1GameMode.gen.cpp.obj"
+"C:\UnrealEngine\UnrealEngine-4.25-plus\Engine\Intermediate\Build\Win64\UE4Editor\Development\Default.rc2.res"
+/OUT:"C:\Unreal Projects\Spec1\Intermediate\Build\Win64\UE4Editor\Development\Spec1\UE4Editor-Spec1.lib"
+/INCLUDE:IMPLEMENT_MODULE_Spec1
