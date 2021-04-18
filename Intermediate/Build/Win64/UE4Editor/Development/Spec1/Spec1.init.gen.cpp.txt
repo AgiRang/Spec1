@@ -1,3 +1,0 @@
-C:\Unreal Projects\Spec1\Intermediate\Build\Win64\UE4Editor\Development\Spec1\Definitions.Spec1.h
-C:\UnrealEngine\UnrealEngine-4.25-plus\Engine\Source\Runtime\CoreUObject\Public\UObject/GeneratedCppIncludes.h
-C:\UnrealEngine\UnrealEngine-4.25-plus\Engine\Source\Runtime\CoreUObject\Public\UObject/MetaData.h

@@ -1,8 +1,0 @@
-{
-	"SourceFiles": [
-		"C:\\Unreal Projects\\Spec1\\Source\\Spec1\\Spec1.Build.cs",
-		"C:\\Unreal Projects\\Spec1\\Source\\Spec1.Target.cs",
-		"C:\\Unreal Projects\\Spec1\\Source\\Spec1Editor.Target.cs"
-	],
-	"EngineVersion": "4.25.0"
-}
