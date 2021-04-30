@@ -8,6 +8,7 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/Controller.h"
 #include "GameFramework/SpringArmComponent.h"
+#include "TimerManager.h"
 
 //////////////////////////////////////////////////////////////////////////
 // ASpec1Character
@@ -43,6 +44,8 @@ ASpec1Character::ASpec1Character()
 	FollowCamera->SetupAttachment(CameraBoom, USpringArmComponent::SocketName); // Attach the camera to the end of the boom and let the boom adjust to match the controller orientation
 	FollowCamera->bUsePawnControlRotation = false; // Camera does not rotate relative to arm
 
+	CanDash = true;
+
 	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
 	// are set in the derived blueprint asset named MyCharacter (to avoid direct content references in C++)
 }
@@ -57,6 +60,8 @@ void ASpec1Character::SetupPlayerInputComponent(class UInputComponent* PlayerInp
 	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &ACharacter::Jump);
 	PlayerInputComponent->BindAction("Jump", IE_Released, this, &ACharacter::StopJumping);
 
+	PlayerInputComponent->BindAction("Dash", IE_Released, this, &ASpec1Character::Dash);
+	PlayerInputComponent->BindAction("MouseLeft", IE_Pressed, this, &ASpec1Character::DoAttack);
 	PlayerInputComponent->BindAxis("MoveForward", this, &ASpec1Character::MoveForward);
 	PlayerInputComponent->BindAxis("MoveRight", this, &ASpec1Character::MoveRight);
 
@@ -74,6 +79,26 @@ void ASpec1Character::SetupPlayerInputComponent(class UInputComponent* PlayerInp
 
 	// VR headset functionality
 	PlayerInputComponent->BindAction("ResetVR", IE_Pressed, this, &ASpec1Character::OnResetVR);
+}
+
+void ASpec1Character::Dash()
+{
+	if (CanDash) {
+		CanDash = false;
+		LaunchCharacter(FVector(FollowCamera->GetForwardVector().X, FollowCamera->GetForwardVector().Y, 0) * 8000, true, true);
+	
+	}
+}
+
+void ASpec1Character::StopDash()
+{
+	GetCharacterMovement()->StopMovementImmediately();
+
+}
+
+void ASpec1Character::ResetDash()
+{
+	CanDash = true;
 }
 
 

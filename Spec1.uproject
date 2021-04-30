@@ -1,13 +1,16 @@
 {
 	"FileVersion": 3,
-	"EngineAssociation": "{81FAF4F8-4A8F-B3E5-D0F7-E691E46EC782}",
+	"EngineAssociation": "{D25BD286-4746-81B8-FEFA-019ECF7E9239}",
 	"Category": "",
 	"Description": "",
 	"Modules": [
 		{
 			"Name": "Spec1",
 			"Type": "Runtime",
-			"LoadingPhase": "Default"
+			"LoadingPhase": "Default",
+			"AdditionalDependencies": [
+				"Engine"
+			]
 		}
 	]
 }
