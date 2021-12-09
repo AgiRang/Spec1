@@ -10,6 +10,9 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "TimerManager.h"
 
+#include "Animation/AnimInstance.h"
+#include "Animation/AnimMontage.h"
+
 //////////////////////////////////////////////////////////////////////////
 // ASpec1Character
 
@@ -44,7 +47,11 @@ ASpec1Character::ASpec1Character()
 	FollowCamera->SetupAttachment(CameraBoom, USpringArmComponent::SocketName); // Attach the camera to the end of the boom and let the boom adjust to match the controller orientation
 	FollowCamera->bUsePawnControlRotation = false; // Camera does not rotate relative to arm
 
-	CanDash = true;
+	bAttackA = false;
+	bAttackB = false;
+	bLMouseDown = false;
+	bRMouseDown = false;
+	ComboCount = 0;
 
 	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
 	// are set in the derived blueprint asset named MyCharacter (to avoid direct content references in C++)
@@ -52,6 +59,60 @@ ASpec1Character::ASpec1Character()
 
 //////////////////////////////////////////////////////////////////////////
 // Input
+
+
+void ASpec1Character::LMouseDown()
+{
+	UE_LOG(LogTemp, Warning, TEXT("LMouseDown()"));
+	bLMouseDown = true;
+
+	if (bAttackA == false) {
+		DoAttackA();
+	}
+}
+
+void ASpec1Character::RMouseDown()
+{
+	UE_LOG(LogTemp, Warning, TEXT("RMouseDown()"));
+	bRMouseDown = true;
+
+	if (bAttackB == false) {
+		DoAttackB();
+	}
+}
+
+void ASpec1Character::DoAttackA()
+{
+	UE_LOG(LogTemp, Warning, TEXT("AttackA()"));
+	bLMouseDown = true;
+
+	UAnimInstance* Animinstance = GetMesh()->GetAnimInstance();
+	if (!Animinstance || !Boss_Attack_HandAndSwordSwing_M) return;
+
+	//clean status
+	bAttackA = true;
+	const char* comboList[] = { "HandAndSwordSwing01","HandAndSwordSwing02","HandAndSwordSwing03" };
+
+	if (!(Animinstance->Montage_IsPlaying(Boss_Attack_HandAndSwordSwing_M))) {
+		Animinstance->Montage_Play(Boss_Attack_HandAndSwordSwing_M);
+	}
+	else {
+		Animinstance->Montage_Play(Boss_Attack_HandAndSwordSwing_M);
+		Animinstance->Montage_JumpToSection(FName(comboList[ComboCount]), Boss_Attack_HandAndSwordSwing_M);
+	}
+}
+
+void ASpec1Character::DoAttackB()
+{
+	UE_LOG(LogTemp, Warning, TEXT("AttackB()"));
+	bRMouseDown = true;
+}
+
+void ASpec1Character::EndAttackA()
+{
+	UE_LOG(LogTemp, Warning, TEXT("EndAttackA()"));
+	bAttackA = false;
+}
 
 void ASpec1Character::SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent)
 {
@@ -61,7 +122,9 @@ void ASpec1Character::SetupPlayerInputComponent(class UInputComponent* PlayerInp
 	PlayerInputComponent->BindAction("Jump", IE_Released, this, &ACharacter::StopJumping);
 
 	PlayerInputComponent->BindAction("Dash", IE_Released, this, &ASpec1Character::Dash);
-	PlayerInputComponent->BindAction("MouseLeft", IE_Pressed, this, &ASpec1Character::DoAttack);
+	PlayerInputComponent->BindAction("LMB", IE_Pressed, this, &ASpec1Character::DoAttackA);
+	PlayerInputComponent->BindAction("RMB", IE_Pressed, this, &ASpec1Character::DoAttackB);
+
 	PlayerInputComponent->BindAxis("MoveForward", this, &ASpec1Character::MoveForward);
 	PlayerInputComponent->BindAxis("MoveRight", this, &ASpec1Character::MoveRight);
 

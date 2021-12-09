@@ -58,6 +58,7 @@ protected:
 	/** Handler for when a touch input stops. */
 	void TouchStopped(ETouchIndex::Type FingerIndex, FVector Location);
 
+
 protected:
 	// APawn interface
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
@@ -76,6 +77,24 @@ public:
 
 	void StopDash();
 	void ResetDash();
+
+	//Character Attack
+	bool bAttackA;
+	bool bAttackB;
+	bool bLMouseDown;
+	bool bRMouseDown;
+	int ComboCount;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Attack")
+		class UAnimMontage* Boss_Attack_HandAndSwordSwing_M;
+
+	void LMouseDown();
+	void RMouseDown();
+	void DoAttackA();
+	void DoAttackB();
+
+	UFUNCTION(BlueprintCallable)
+	void EndAttackA();
 
 	UPROPERTY()
 		FTimerHandle DashHandle;
